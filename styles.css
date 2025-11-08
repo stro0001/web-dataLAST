@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #f4f4f8;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #222;
+}
+
+.site-header {
+    background: #343a40;
+    color: #fff;
+    padding: 30px 0 15px 0;
+    text-align: center;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 2.2em;
+}
+
+.subtitle {
+    font-size: 1.15em;
+    font-style: italic;
+    color: #c0c8cc;
+}
+
+.site-main {
+    padding: 30px 15px;
+    max-width: 650px;
+    margin: 36px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(20,30,40,0.05);
+}
+
+.section {
+    margin-bottom: 38px;
+}
+
+.info {
+    background: #eaf0f8;
+    border-left: 5px solid #4176c5;
+    padding: 16px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    color: #22335a;
+}
+
+#chart-container {
+    min-height: 180px;
+    padding: 12px 0;
+}

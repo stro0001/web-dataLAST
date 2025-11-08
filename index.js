@@ -14,14 +14,14 @@ app.use(express.json());
 const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "1mTURNT!",
+    password: "",
     database: "chinook"
 });
 
 connection.connect();
 
 app.get('/data', (req, res) => {
-    connection.query('SELECT * FROM yourTable', (error, results) => {
+    connection.query('SELECT * FROM album', (error, results) => {
         if (error) throw error;
         res.json(results);
     });
