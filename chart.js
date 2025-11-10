@@ -1,46 +1,50 @@
 
 
 // Chart 4 - Genre Growth Popularity
-const ctx = document.getElementById('chart-growth');
+fetch('querie4.json')
+    .then(response => {
+        if (!response.ok) throw new Error('HTTP error ' + response.status);
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data loaded:', data);
 
-new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['2009', '2010', '2011', '2012', '2013'],
-        datasets: [
-            {
-                label: 'TV Shows',
-                data: [0, 13, 14, 13, 7],
-                borderColor: '#E74C3C',
-                fill: false,
-                tension: 0.3
-            },
-            {
-                label: 'Drama',
-                data: [0, 9, 6, 9, 5],
-                borderColor: '#3498DB',
-                fill: false,
-                tension: 0.3
-            },
-            {
-                label: 'Bossa Nova',
-                data: [1, 2, 8, 0, 4],
-                borderColor: '#2ECC71',
-                fill: false,
-                tension: 0.3
+        // 🔹 Labels = årstal (fra første objekt)
+        const labels = Object.keys(data[0]).filter(key => /^\d{4}$/.test(key));
+
+        // 🔹 Datasets = ét sæt pr. genre
+        const datasets = data.map(item => ({
+            label: item.Genre,
+            data: labels.map(year => item[year]),
+            borderColor: randomColor(),
+            fill: false,
+            tension: 0.3
+        }));
+
+        // 🔹 Tegn grafen
+        const ctx = document.getElementById('chart-growth');
+        new Chart(ctx, {
+            type: 'line',
+            data: { labels, datasets },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Udvikling i solgte tracks pr. genre (2009–2013)'
+                    },
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Solgte tracks' } }
+                }
             }
-        ]
-    },
-    options: {
-        plugins: {
-            title: {
-                display: true,
-                text: 'Udvikling i solgte tracks pr. genre (2009–2013)'
-            },
-            legend: { position: 'bottom' }
-        },
-        scales: {
-            y: { beginAtZero: true, title: { display: true, text: 'Solgte tracks' } }
-        }
-    }
-});
+        });
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+
+
+// 🔸 Lille hjælpefunktion til tilfældige farver
+function randomColor() {
+    const colors = ['#E74C3C', '#3498DB', '#2ECC71', '#9B59B6', '#F1C40F', '#E67E22'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
