@@ -1,101 +1,92 @@
+/* ===== Basic setup ===== */
+* {
+    box-sizing: border-box;
+}
 body {
     margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f5f7fa;
-    color: #20232a;
+    font-family: sans-serif;
+    background: #111;
+    color: #f5f5f5;
 }
 
-header.hero {
-    position: relative;
-    background: #141c3a;
-    color: #fff;
+/* ===== Header og footer ===== */
+.head, .footer {
+    padding: 20px 0;
     text-align: center;
-    padding: 48px 20px 70px 20px;
-    overflow: hidden;
 }
-
-.hero-title {
-    font-size: 2.7em;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+.head h1 {
+    margin: 0 0 4px;
 }
-
-.hero-subtitle {
-    font-size: 1.4em;
-    font-weight: 400;
-    margin-bottom: 20px;
-}
-
-.pulse-bg {
-    position: absolute;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 60px;
-    background: radial-gradient(ellipse at center, #07478033 0%, #141c3a00 80%);
-    opacity: 0.6;
-    animation: pulseMove 2.5s infinite alternate;
-}
-@keyframes pulseMove {
-    0% { opacity: 0.4; }
-    100% { opacity: 0.6; }
-}
-
-main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 16px 40px 16px;
-    background: #fff;
-    border-radius: 16px 16px 4px 4px;
-    box-shadow: 0 2px 15px rgba(40,55,100,0.09);
-}
-
-.info-section {
-    background: #e7edf7;
-    border-left: 5px solid #606af0;
-    padding: 24px;
-    margin-bottom: 38px;
-    border-radius: 10px;
-}
-
-.info-block ul, .info-section ul {
-    margin-left: 2em;
-}
-
-.section {
-    margin-bottom: 45px;
-}
-
-.section h2 {
-    margin-top: 0;
-    font-size: 1.45em;
-    color: #2845a4;
-}
-
-#map-container, #chart-hits, #chart-genres, #chart-mediatype {
-    width: 100%;
-    min-height: 210px;
-    background: #f6fafe;
-    border-radius: 8px;
-    border: 1px solid #dce2ea;
-    box-shadow: 0 1px 8px rgba(120,130,180,0.04);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 14px;
-}
-
-.footer {
-    border-top: 1px solid #e0e8ee;
-    margin-top: 35px;
-    padding: 22px;
-    text-align: center;
-    background: #f4f4fa;
-}
-
-.slogan {
-    font-size: 1.15em;
-    font-style: italic;
-    color: #2a3354;
+.head p {
     margin: 0;
+    color: #aaa;             /* lysere tekst */
+}
+.footer {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* ===== Container ===== */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* ===== World map (øverst) ===== */
+.worldmap {
+    text-align: center;
+    background: #1c1c1c;
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+.worldmap h2 {
+    margin: 0 0 12px;
+}
+.worldmap canvas {
+    width: 100%;
+    height: 400px;
+    background: transparent;
+    border-radius: 8px;
+}
+
+/* ===== Flex layout til de tre bokse ===== */
+.row {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+    flex-wrap: wrap;        /* så de lægger sig under hinanden på små skærme */
+}
+.card {
+    flex: 1;
+    min-width: 300px;
+    background: #1c1c1c;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 12px;
+}
+.card h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+
+/* ===== Diagrammer ===== */
+canvas {
+    display: block;
+    width: 100%;
+    height: 260px;
+    background: transparent;
+    border-radius: 6px;
+}
+
+/* ===== Mobilvisning ===== */
+@media (max-width: 900px) {
+    .row {
+        flex-direction: column;
+    }
+    .worldmap canvas {
+        height: 300px;
+    }
 }
