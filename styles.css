@@ -1,50 +1,59 @@
-/* ===== Basic setup ===== */
+/*------ Basic setup ------- */
 * {
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
     font-family: sans-serif;
-    background: #111;
-    color: #f5f5f5;
+    background: #999B84;
+    color: #F4EEED;
 }
 
-/* ===== Header og footer ===== */
-.head, .footer {
+/* ------ Header ------ */
+.head {
     padding: 20px 0;
     text-align: center;
 }
+
 .head h1 {
     margin: 0 0 4px;
 }
+
 .head p {
     margin: 0;
-    color: #aaa;             /* lysere tekst */
-}
-.footer {
     color: #aaa;
-    font-size: 14px;
 }
 
-/* ===== Container ===== */
+/* ----- Container ------*/
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 16px;
 }
 
-/* ===== World map (øverst) ===== */
+/*------ Footer ----*/
+.footer {
+    padding: 60px 0;
+    text-align: center;
+    color: black;
+    font-size: 14px;
+}
+
+/*----- World map (øverst) ----- */
 .worldmap {
     text-align: center;
-    background: #1c1c1c;
-    border-top: 1px solid #2a2a2a;
-    border-bottom: 1px solid #2a2a2a;
+    background: #999B84;
+    border: 2px solid #2a2a2a;
     padding: 20px;
-    margin-bottom: 24px;
+    border-radius: 10px;
+    margin: 24px;
 }
+
 .worldmap h2 {
     margin: 0 0 12px;
 }
+
 .worldmap canvas {
     width: 100%;
     height: 400px;
@@ -57,16 +66,18 @@ body {
     display: flex;
     gap: 16px;
     margin: 16px 0;
-    flex-wrap: wrap;        /* så de lægger sig under hinanden på små skærme */
+    flex-wrap: wrap;
 }
+
 .card {
     flex: 1;
     min-width: 300px;
-    background: #1c1c1c;
+    background: black;
     border: 1px solid #2a2a2a;
     border-radius: 10px;
     padding: 12px;
 }
+
 .card h2 {
     margin: 0 0 8px;
     font-size: 16px;
@@ -86,8 +97,8 @@ canvas {
     .row {
         flex-direction: column;
     }
+
     .worldmap canvas {
         height: 300px;
     }
 }
-kjjjjjjjjjjj
