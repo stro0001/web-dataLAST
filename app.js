@@ -83,10 +83,10 @@ fetch('querie4.json')
     .then(data => {
         console.log('Data loaded:', data);
 
-        // 🔹 Labels = årstal (fra første objekt)
+        // Labels = årstal (fra første objekt)
         const labels = Object.keys(data[0]).filter(key => /^\d{4}$/.test(key));
 
-        // 🔹 Datasets = ét sæt pr. genre
+        // Datasets = ét sæt pr. genre
         const datasets = data.map(item => ({
             label: item.Genre,
             data: labels.map(year => item[year]),
@@ -96,7 +96,7 @@ fetch('querie4.json')
             tension: 0.3
         }));
 
-        // 🔹 Tegn grafen
+        //Tegn grafen
         const ctx = document.getElementById('growthChart');
         new Chart(ctx, {
             type: 'line',
@@ -105,7 +105,7 @@ fetch('querie4.json')
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Udvikling i solgte tracks pr. genre (2009–2013)'
+                        text: 'Development in sold tracks per genre (2009–2013) for the three genres that have evolved the most'
                     },
                     legend: { position: 'bottom' }
                 },
