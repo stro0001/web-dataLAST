@@ -1,4 +1,4 @@
-// Load Google Charts API for GeoChart
+// 1. Load Google Charts API for GeoChart
 google.charts.load('current', {
     packages: ['geochart']
 });
@@ -65,7 +65,7 @@ function drawWorldMap() {
         });
 }
 
-// Pie Chart – Global Genre
+// 2. Pie Chart – Global Genre
 fetch("globalChart.json")
     .then(response => response.json())
     .then(data => {
@@ -86,7 +86,7 @@ fetch("globalChart.json")
         });
     });
 
-// Doughnut Chart – Top 1 Artist & Songs
+// 3. Doughnut Chart – Top 1 Artist & Songs
 fetch('querie3.json')
     .then(res => res.json())
     .then(data => {
@@ -108,7 +108,7 @@ fetch('querie3.json')
         });
     });
 
-// Line Chart – Genre Growth Popularity
+// 4. Line Chart – Genre Growth Popularity
 fetch('querie4.json')
     .then(response => {
         if (!response.ok) throw new Error('HTTP error ' + response.status);
