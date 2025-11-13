@@ -12,7 +12,7 @@ body {
     align-items: center;
 }
 
-/* ------ Header ------ */
+/* Header */
 .head {
     padding: 20px 0;
     text-align: center;
@@ -20,23 +20,15 @@ body {
     display: flex;
     justify-content: center;
 }
-
 .head .container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+.head h1 { margin: 0 0 4px; }
+.head p { margin: 0; color: #E0E0E0; }
 
-.head h1 {
-    margin: 0 0 4px;
-}
-
-.head p {
-    margin: 0;
-    color: #E0E0E0;
-}
-
-/* ----- Container ------*/
+/* Main Container */
 .container {
     max-width: 1100px;
     width: 100%;
@@ -46,37 +38,59 @@ body {
     align-items: center;
 }
 
-/*----- World map (øverst) ----- */
+/* Worldmap */
 .worldmap {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     background: #263238;
     border-radius: 16px;
     padding: 20px;
-
     max-width: 1100px;
     width: calc(100% - 48px);
     margin: 24px auto;
-
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     border: none;
 }
+.worldmap h2 { margin: 0 0 12px; }
+.worldmap .geo-map { width: 100%; height: 400px; }
 
-.worldmap h2 {
-    margin: 0 0 12px;
-}
-
-.worldmap canvas {
-    width: 100%;
-    height: 300px;
+/* Tooltip styles for worldmap */
+.geo-tooltip {
+    background: #1e1e1e;
+    padding: 10px 14px;
     border-radius: 8px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+.geo-tooltip .geo-flag {
+    font-size: 18px;
+    margin-bottom: 4px;
+    display: block;
+}
+.geo-tooltip .geo-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.geo-dot-rock {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #5C6BC0;
+    border-radius: 50%;
+}
+.geo-dot-latin {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #FBC02D;
+    border-radius: 50%;
 }
 
-
-/* Flex layout til de tre bokse */
+/* Flex layout for charts */
 .charts {
     display: flex;
     flex-direction: column;
@@ -84,8 +98,6 @@ body {
     gap: 20px;
     width: 100%;
 }
-
-/* Øverste række: 2 bokse ved siden af hinanden */
 .top-row {
     display: flex;
     justify-content: center;
@@ -94,8 +106,6 @@ body {
     width: 100%;
     max-width: 1100px;
 }
-
-/* Nederste række */
 .bottom-row {
     display: flex;
     justify-content: center;
@@ -104,7 +114,6 @@ body {
     max-width: 1100px;
 }
 
-/* Bokse generelt */
 .chart {
     background: #263238;
     border-radius: 16px;
@@ -112,35 +121,31 @@ body {
     flex: 1;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 canvas {
     width: 100%;
     height: 300px;
     border-radius: 6px;
 }
-
 .others {
     font-size: 0.8rem;
 }
 
-/*------ Footer ----*/
+/* Footer */
 .footer {
     padding: 60px 0;
     text-align: center;
     color: black;
     font-size: 14px;
-
     width: 100%;
     display: flex;
     justify-content: center;
 }
-
 .footer .container {
     display: flex;
     justify-content: center;
 }
+
