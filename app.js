@@ -6,7 +6,7 @@ google.charts.setOnLoadCallback(drawWorldMap);
 
 function drawWorldMap() {
     fetch("querie1.json")
-        .then(res => res.json())
+.then(res => res.json())
         .then(data => {
             // Country to Flag mapping
             const flagMap = {
@@ -15,7 +15,7 @@ function drawWorldMap() {
                 "Denmark": "🇩🇰", "Finland": "🇫🇮", "France": "🇫🇷", "Germany": "🇩🇪",
                 "Hungary": "🇭🇺", "India": "🇮🇳", "Ireland": "🇮🇪", "Italy": "🇮🇹",
                 "Netherlands": "🇳🇱", "Norway": "🇳🇴", "Poland": "🇵🇱", "Portugal": "🇵🇹",
-                "Spain": "🇪🇸", "Sweden": "🇸🇪", "United Kingdom": "🇬🇧", "USA": "🇺🇸"
+                "Spain": "🇪🇸", "Sweden": "🇸🇪", "United Kingdom": "🇬🇧", "United States": "🇺🇸"
             };
             // Genre to value mapping
             const genreMap = { "Rock": 1, "Latin": 2 };

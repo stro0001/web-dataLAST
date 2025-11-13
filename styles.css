@@ -12,7 +12,7 @@ body {
     align-items: center;
 }
 
-/* Header */
+/* ------- HEADER -------- */
 .head {
     padding: 20px 0;
     text-align: center;
@@ -28,7 +28,7 @@ body {
 .head h1 { margin: 0 0 4px; }
 .head p { margin: 0; color: #E0E0E0; }
 
-/* Main Container */
+/*  ------ MAIN CONTAINER ------    */
 .container {
     max-width: 1100px;
     width: 100%;
@@ -38,7 +38,7 @@ body {
     align-items: center;
 }
 
-/* Worldmap */
+/* ------- WORLD MAP ------- */
 .worldmap {
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@ body {
 .worldmap h2 { margin: 0 0 12px; }
 .worldmap .geo-map { width: 100%; height: 400px; }
 
-/* Tooltip styles for worldmap */
+/* ------ TOOLTIP STYLES FOR WORLDMAP-----*/
 .geo-tooltip {
     background: #1e1e1e;
     padding: 10px 14px;
@@ -90,7 +90,7 @@ body {
     border-radius: 50%;
 }
 
-/* Flex layout for charts */
+/* -------- FLEX LAYOUT FOR CHARTS -------  */
 .charts {
     display: flex;
     flex-direction: column;
@@ -134,7 +134,7 @@ canvas {
     font-size: 0.8rem;
 }
 
-/* Footer */
+/* ------ FOOTER -----v  */
 .footer {
     padding: 60px 0;
     text-align: center;
