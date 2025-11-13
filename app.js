@@ -18,6 +18,43 @@ const connection = mysql.createConnection({
 
 // Chart 1 - Top Genre by Country – World Map
 
+function loadData() {
+    fetch('querie1.json')
+        .then(response => response.json())
+        .then(jsonData => {
+            const countryTotals = {};
+
+            jsonData.forEach(item => {
+                const country = item.Country;
+                const sales = Number(item.TotalSales);
+                countryTotals[country] = (countryTotals[country] || 0) + sales;
+            });
+
+            const chartData = [['Country', 'TotalSales']];
+            for (const country in countryTotals) {
+                chartData.push([country, countryTotals[country]]);
+            }
+
+            drawRegionsMap(chartData);
+        })
+        .catch(error => console.error('Error loading JSON:', error));
+}
+
+function drawRegionsMap(chartData) {
+    const data = google.visualization.arrayToDataTable(chartData);
+//Chat har hjulpet med farver
+    const options = {
+        backgroundColor: '#2b2b2b',
+        datalessRegionColor: '#e0e0e0',
+        defaultColor: '#e0e0e0'
+
+    };
+
+
+    const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+    chart.draw(data, options);
+}
+
 //Chart 2 - Hvilke genre dominere globalt?
 // Hent data fra JSON-filen
 fetch("globalChart.json")

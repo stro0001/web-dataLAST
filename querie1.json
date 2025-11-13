@@ -1,0 +1,98 @@
+[
+	{
+		"Country" : "Argentina",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Australia",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Austria",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Belgium",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Brazil",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Canada",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Chile",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Czech Republic",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Denmark",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Finland",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "France",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Germany",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Hungary",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "India",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Ireland",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Italy",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Netherlands",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Norway",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Poland",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Portugal",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Spain",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "Sweden",
+		"Genre" : "Latin"
+	},
+	{
+		"Country" : "United Kingdom",
+		"Genre" : "Rock"
+	},
+	{
+		"Country" : "USA",
+		"Genre" : "Rock"
+	}
+]
