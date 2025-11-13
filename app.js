@@ -87,19 +87,26 @@ fetch("globalChart.json")
     });
 
 // 3. Doughnut Chart – Top 1 Artist & Songs
+// Henter data fra en lokal JSON-fil i stedet for, at det sker direkte fra databasen.
+// Det er hurtigere og nemmere på klientsiden, fordi dataen allerede er færdigbehandlet vha. sql's export.
 fetch('querie3.json')
     .then(res => res.json())
     .then(data => {
+// Henter alle artisternes navne som labels til diagrammet.        
         const labels = data.map(item => item.Artist);
+// Henter deres samlede salgstal som datasæt.        
         const sales = data.map(item => item.TotalSales);
+// Finder canvas-elementet fra HTML, hvor diagrammet skal placeres.        
         const ctx = document.getElementById("artistChart").getContext('2d');
+// Her skaber vi den type diagram vi gerne vil have såsom doughnut eller pie.        
         new Chart(ctx, {
-            type: 'doughnut',
+            type: 'doughnut', // Diagramtypen
             data: {
-                labels: labels,
+                labels: labels, // Artisternes navne.
                 datasets: [{
                     label: 'Total Sales',
-                    data: sales,
+                    data: sales, // Salgstal for hver artist.
+                    // 3 forskellige farver til de tre top artister, hvilket skaber en visuel adskillelse.
                     backgroundColor: ["#5C6BC0", "#FBC02D", "#81C784"],
                     borderColor: 'rgba(75,192,192,1)',
                     borderWidth: 1,
@@ -109,22 +116,30 @@ fetch('querie3.json')
     });
 
 // 4. Line Chart – Genre Growth Popularity
+// Samme princip: Data hentes som JSON i stedet for via SQL, SQL2 & app.get.
+// Vi bruger statiske JSON-filer fordi browseren ikke selv kan lave SQL-queries direkte.
+// Med mindre det er gjort vha. insomnia/webstorm osv. som nævnt ovenover.
 fetch('querie4.json')
     .then(response => {
         if (!response.ok) throw new Error('HTTP error ' + response.status);
         return response.json();
     })
+// Når data er klar, så kører vores arrow function.    
     .then(data => {
+// Finder alle kolonner der ligner årstal, dvs. 2009,2010,2011,2012 & 2013.        
         const labels = Object.keys(data[0]).filter(key => /^\d{4}$/.test(key));
+// Bestemmer farver til vores genrer.
         const colors = ["#BA68C8", "#FBC02D", "#FF8A65"];
+// Opretter et datasæt PER genre.        
         const datasets = data.map((item, idx) => ({
-            label: item.Genre,
-            data: labels.map(year => item[year]),
+            label: item.Genre, // Genrens navn vises i legenden.
+            data: labels.map(year => item[year]), // Værdier for hvert årstal.
             backgroundColor: colors[idx % colors.length],
             borderColor: colors[idx % colors.length],
-            fill: false,
-            tension: 0.3
+            fill: false, // Linjen udfyldes ikke nedenunder.
+            tension: 0.3 // giver linjen en blød kurve.
         }));
+// Opretter et line chart for vores genrers udvikling.      
         const ctx = document.getElementById('growthChart');
         new Chart(ctx, {
             type: 'line',
@@ -133,6 +148,7 @@ fetch('querie4.json')
                 plugins: {
                     title: {
                         display: true,
+// Titel på diagrammet som beskriver konteksten.                        
                         text: 'Development in sold tracks per genre (2009–2013) for the three genres that have evolved the most'
                     },
                     legend: { position: 'bottom' }
@@ -143,6 +159,7 @@ fetch('querie4.json')
             }
         });
     })
+// Viser fejl i konsollen, hvis nu vores JSON-fil ikke kunne hentes eller parses.    
     .catch(error => console.error('Error fetching JSON:', error));
 
 
