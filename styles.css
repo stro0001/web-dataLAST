@@ -75,7 +75,8 @@ body {
     border-radius: 8px;
 }
 
-/* ===== Flex layout til de tre bokse ===== */
+
+/* Flex layout til de tre bokse */
 .charts {
     display: flex;
     flex-direction: column;

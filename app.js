@@ -1,44 +1,124 @@
-/*const express = require("express");
-const mysql = require("mysql2");
-const cors = require("cors");
-
-const app = express();
-const port = 3100;
-
-app.use(cors());
-
-//Host, user, password database
-const connection = mysql.createConnection({
-    host: process.env.DBHOST,
-    user: process.env.DBUSER,
-    password: process.env.DBPASSWORD,
-    database: process.env.DBDATABASE
-});*/
-
-
 // Chart 1 - Top Genre by Country – World Map
 
-function loadData() {
-    fetch('querie1.json')
-        .then(response => response.json())
-        .then(jsonData => {
-            const countryTotals = {};
+// === GOOGLE GEOCHART MAP ===
 
-            jsonData.forEach(item => {
-                const country = item.Country;
-                const sales = Number(item.TotalSales);
-                countryTotals[country] = (countryTotals[country] || 0) + sales;
-            });
+// 1. Load Google Charts
+google.charts.load('current', {
+    packages: ['geochart']
+});
 
-            const chartData = [['Country', 'TotalSales']];
-            for (const country in countryTotals) {
-                chartData.push([country, countryTotals[country]]);
+// 2. Når Google er klar → kør map-funktionen
+google.charts.setOnLoadCallback(drawWorldMap);
+
+function drawWorldMap() {
+    fetch("querie1.json")
+        .then(res => res.json())
+        .then(data => {
+
+            // Land → Flag emojis
+            const flagMap = {
+                "Argentina": "🇦🇷",
+                "Australia": "🇦🇺",
+                "Austria": "🇦🇹",
+                "Belgium": "🇧🇪",
+                "Brazil": "🇧🇷",
+                "Canada": "🇨🇦",
+                "Chile": "🇨🇱",
+                "Czech Republic": "🇨🇿",
+                "Denmark": "🇩🇰",
+                "Finland": "🇫🇮",
+                "France": "🇫🇷",
+                "Germany": "🇩🇪",
+                "Hungary": "🇭🇺",
+                "India": "🇮🇳",
+                "Ireland": "🇮🇪",
+                "Italy": "🇮🇹",
+                "Netherlands": "🇳🇱",
+                "Norway": "🇳🇴",
+                "Poland": "🇵🇱",
+                "Portugal": "🇵🇹",
+                "Spain": "🇪🇸",
+                "Sweden": "🇸🇪",
+                "United Kingdom": "🇬🇧",
+                "USA": "🇺🇸"
+            };
+
+            // Genre til tal
+            const genreMap = {
+                "Rock": 1,
+                "Latin": 2
+            };
+
+            // Tooltip HTML
+            function tooltipHTML(country, genre) {
+                const colorDot = genre === "Rock" ? "#5C6BC0" : "#FBC02D";
+                const flag = flagMap[country] || "🌍";
+
+                return `
+                    <div style="
+                        background:#1e1e1e;
+                        padding:10px 14px;
+                        border-radius:8px;
+                        color:white;
+                        font-family:sans-serif;
+                        font-size:14px;
+                    ">
+                        <div style="font-size:18px; margin-bottom:4px;">
+                            ${flag} ${country}
+                        </div>
+                        <div style="
+                            display:flex;
+                            align-items:center;
+                            gap:6px;
+                        ">
+                            <span style="
+                                display:inline-block;
+                                width:12px; height:12px;
+                                background:${colorDot};
+                                border-radius:50%;
+                            "></span>
+                            <span>${genre}</span>
+                        </div>
+                    </div>
+                `;
             }
 
-            drawRegionsMap(chartData);
-        })
-        .catch(error => console.error('Error loading JSON:', error));
+            // Google-format med HTML-tooltip
+            const chartData = [
+                ["Country", "GenreValue", { type: "string", role: "tooltip", p: { html: true } }]
+            ];
+
+            data.forEach(item => {
+                chartData.push([
+                    item.Country,
+                    genreMap[item.Genre],
+                    tooltipHTML(item.Country, item.Genre)
+                ]);
+            });
+
+            const dataTable = google.visualization.arrayToDataTable(chartData);
+
+            const chart = new google.visualization.GeoChart(
+                document.getElementById('chart-worldMap')
+            );
+
+            chart.draw(dataTable, {
+                colorAxis: {
+                    minValue: 1,
+                    maxValue: 2,
+                    colors: ['#5C6BC0', '#FBC02D']
+                },
+                legend: 'none',
+                backgroundColor: '#263238',
+                datalessRegionColor: '#37474F',
+                tooltip: { isHtml: true }
+            });
+        });
 }
+
+
+
+
 
 function drawRegionsMap(chartData) {
     const data = google.visualization.arrayToDataTable(chartData);
@@ -49,7 +129,6 @@ function drawRegionsMap(chartData) {
         defaultColor: '#e0e0e0'
 
     };
-
 
     const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
     chart.draw(data, options);
