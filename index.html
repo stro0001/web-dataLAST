@@ -1,49 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Music Around The World</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="app.js"></script>
+    <script defer src="app.js"></script>
 </head>
 <body>
-
 <header class="head">
     <div class="container">
         <h1>Music Around The World</h1>
-        <p>Music Around The World takes you on a digital journey through global music.
-            We show how data from 2009–2013 reveals the rhythms and genres that both connect and distinguish the
-            world.</p>
+        <p>
+            Music Around The World takes you on a digital journey through global music.
+            We show how data from 2009–2013 reveals the rhythms and genres that both connect and distinguish the world.
+        </p>
     </div>
 </header>
-
-<!-- World Map section -->
 <section class="worldmap">
     <h2>Top Genre by Country – World Map</h2>
-    <div id="chart-worldMap" class="geo-map" style="width: 100%; height: 400px;"></div>
+    <div id="chart-worldMap" class="geo-map"></div>
 </section>
-
 <main class="container">
-    <!-- 3 charts in a flex row -->
     <div class="charts">
         <div class="top-row">
-
             <div class="chart">
                 <h2>Global Genre</h2>
                 <canvas id="globalChart"></canvas>
-                <p class="others"><strong> *Others:</strong> Jazz, Blues, TV Shows, Classical, R&B/Soul, Reggae, Pop, Drama, Sci Fi & Fantasy,
+                <p class="others">
+                    <strong>*Others:</strong> Jazz, Blues, TV Shows, Classical, R&B/Soul, Reggae, Pop, Drama, Sci Fi & Fantasy,
                     Soundtrack, Hip Hop/Rap, Bossa Nova, World, Alternative, Electronica/Dance, Heavy Metal, Easy
-                    Listening, Comedy, Rock And Roll, Science Fiction </p>
+                    Listening, Comedy, Rock And Roll, Science Fiction
+                </p>
             </div>
-
             <div class="chart">
                 <h2>Top 3 Artist</h2>
                 <canvas id="artistChart"></canvas>
             </div>
         </div>
-
         <div class="bottom-row">
             <div class="chart">
                 <h2>Genre Growth Popularity</h2>
@@ -52,7 +47,6 @@
         </div>
     </div>
 </main>
-
 <footer class="footer">
     <div class="container">
         <small>© Music Around The World</small>
@@ -60,4 +54,3 @@
 </footer>
 </body>
 </html>
-
